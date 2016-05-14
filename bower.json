@@ -1,0 +1,21 @@
+{
+  "name": "nosthertus.github.io",
+  "homepage": "https://github.com/Nosthertus/nosthertus.github.io",
+  "authors": [
+    "Nosthertus <nosthertus@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "material-design-lite": "^1.1.3"
+  }
+}
