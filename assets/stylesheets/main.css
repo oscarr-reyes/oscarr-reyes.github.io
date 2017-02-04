@@ -1,0 +1,54 @@
+html, body{
+	height: 100%;
+	width: 100%;
+}
+body{
+	margin: 0;
+}
+
+header{
+	height: 60px;
+	justify-content: space-between;
+	z-index: 100;
+}
+header > #header-text{
+	margin: 18px;
+	font-size: 20px;	
+}
+
+content{
+	z-index: 90;
+}
+
+#sidenav{
+	width: 256px;
+	-webkit-box-shadow: 1px 0 4px 1px #CCC;
+	box-shadow: 1px 0 4px 1px #CCC;
+	z-index: 80px;
+}
+#sidenav > ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#sidenav > ul > li{
+	height: 50px;
+	box-sizing: padding-box;
+	padding: 14px;
+}
+
+#main{
+}
+
+.flexed-row{
+	display: flex;
+	flex-direction: row;
+}
+.flexed-column{
+	display: flex;
+	flex-direction: column;
+}
+.flexed-row > .flex-grow,
+.flexed-column > .flex-grow{
+	flex: 1;
+}
