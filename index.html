@@ -5,7 +5,6 @@
 
 	<meta charset="utf-8">
 
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="assets/stylesheets/main.css">
 	<link rel="stylesheet" href="assets/stylesheets/palette.css">
 </head>
@@ -20,26 +19,47 @@
 		<div id="sidenav">
 			<ul>
 				<li>
-					<a href="#section-home">Item 1</a>
+					<a href="#section-home" class="primary-text-color" data-msg="home">{home}</a>
 				</li>
 				
 				<li>
-					<a href="#section-biography">Item 2</a>
+					<a href="#section-biography" class="primary-text-color" data-msg="biography">{biography}</a>
 				</li>
 				
 				<li>
-					<a href="#section-projects">Item 3</a>
+					<a href="#section-projects" class="primary-text-color" data-msg="projects">{projects}</a>
 				</li>
 			</ul>
 		</div>
+		
 		<div id="main" class="flexed-column flex-grow">
 			<section id="section-home" class="flexed-column">
 				<img id="user-thumbnail" src="https://avatars.githubusercontent.com/u/5789159?v=3">
-				<h2 id="user-name">Oscar Reyes <span id="user-nickname" class="secondary-text-color">(Nosthertus)</span></h2>
+
+				<h2 id="user-name" class="primary-text-color">Oscar Reyes <span id="user-nickname" class="secondary-text-color">(Nosthertus)</span></h2>
+
 				<h3 id="user-title">Full-Stack Web Developer</h3>
 			</section>
-			<section id="section-biography"></section>
-			<section id="section-projects"></section>
+
+			<section id="section-biography">
+				<h1 class="section-title primary-text-color" data-msg="biography">{biography}</h1>
+			</section>
+			
+			<section id="section-projects" class="flexed-column">
+				<h1 class="section-title primary-text-color" data-msg="projects">{projects}</h1>
+				
+				<div class="flexed-row flex-grow section-content wrapper">
+					<div class="card">
+						<div class="card-media">
+							<img src="https://placehold.it/320x180">
+						</div>
+						<div class="card-title">
+							<h3 class="card-title-text">Title here</h3>
+							<p class="card-title-sub-text">Sub-title here</p>
+						</div>
+					</div>
+				</div>
+			</section>
 		</div>
 	</content>
 </body>
