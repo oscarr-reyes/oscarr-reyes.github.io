@@ -51,6 +51,7 @@ content{
 	padding: 14px;
 	text-decoration: none;
 	outline-style: none;
+	text-transform: capitalize;
 }
 
 #main{
@@ -63,6 +64,7 @@ content{
 }
 #main > section h1.section-title{
 	margin: 15px;
+	text-transform: capitalize;
 }
 #main > section .section-content{
 	margin: 0 15px;
