@@ -2,6 +2,13 @@
 	"en": {
 		"biography": "biography",
 		"home": "home",
-		"projects": "projects"
+		"projects": "projects",
+		"available": "available"
+	},
+	"es": {
+		"biography": "Acerca de mi",
+		"home": "home",
+		"projects": "proyectos",
+		"available": "disponible"
 	}
 }

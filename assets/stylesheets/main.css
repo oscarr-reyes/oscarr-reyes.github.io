@@ -21,7 +21,7 @@ header > #header-text{
 	margin: 18px;
 	font-size: 20px;	
 }
-header > i.material-icons{
+header i.material-icons{
 	margin: 18px;
 	cursor: pointer;
 }
@@ -30,27 +30,35 @@ content{
 	z-index: 90;
 }
 
+.hidden{
+	display: none;
+}
+
 #sidenav{
 	width: 256px;
 	-webkit-box-shadow: 1px 0 4px 1px #CCC;
 	box-shadow: 1px 0 4px 1px #CCC;
 	z-index: 80;
 }
-#sidenav > ul{
+#sidenav > ul,
+.menu .menu-list > ul{
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
-#sidenav > ul > li{
+#sidenav > ul > li,
+.menu .menu-list > ul > li{
 	height: 50px;
 	box-sizing: padding-box;
 	transition: all .2s;
 	outline: 
 }
-#sidenav > ul > li:hover{
+#sidenav > ul > li:hover,
+.menu .menu-list > ul > li:hover{
 	background: #EEE;
 }
-#sidenav > ul > li > a{
+#sidenav > ul > li > a,
+.menu .menu-list > ul > li > a{
 	display: block;
 	padding: 14px;
 	text-decoration: none;
@@ -87,14 +95,12 @@ section#section-home > #user-name{
 	font-size: 16px;
 	font-style: italic;
 }
-
+section#section-home > #user-email,
+section#section-home > #user-available{
+	margin: 10px auto;
+}
 section#section-home > #user-title{
 	margin: 20px auto auto;
-}
-
-section#section-projects > #project-list{
-	overflow-y: hidden;
-	overflow-x: hidden;	
 }
 
 .flexed-row{
@@ -144,4 +150,30 @@ section#section-projects > #project-list{
 }
 .card > .card-title > .card-title-sub-text{
 	margin: 8px 0 0;
+}
+
+.menu{
+	position: relative;
+}
+.menu > .menu-list{
+	position: absolute;
+	top: 18px;
+	opacity: 1;
+
+	width: 150px;
+	background: #FFF;
+	-webkit-box-shadow: 0 6px 8px 0px #CCC;
+	box-shadow: 0 6px 8px 0px #CCC;
+	overflow: hidden;
+
+	transition: all .1s ease-out;
+}
+.menu > .menu-list.hidden{
+	display: unset;
+	top: 0px;
+	opacity: 0;
+	height: 0px;
+}
+.menu > .menu-list.menu-left{
+	right: 18px;
 }

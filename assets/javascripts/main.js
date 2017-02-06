@@ -3,6 +3,7 @@ window.onload = init;
 function init(){
 	// Set local messages
 	setLocal();
+	setApiData();
 }
 
 /**
@@ -20,9 +21,23 @@ function setLocal(){
 			// Set all messages to all elements
 			for(i = 0; msgs.length > i; i++){
 				var node = msgs.item(i),
-					msg = getDataMsg(node);
+					msg = getData("msg", node);
 
 				node.textContent = messages[msg];
+			}
+		});
+}
+
+function setApiData(){
+	var props = document.querySelectorAll("*[data-prop]");
+
+	fetch("https://api.github.com/users/Nosthertus")
+		.then((data) => {
+			for(i = 0; props.length > i; i++){
+				var node = props.item(i),
+					prop = getData("prop", node);
+
+				node.textContent = data[prop];
 			}
 		});
 }
@@ -64,18 +79,57 @@ function fetch(url){
  * @todo get the local language selected from cookie storage
  */
 function getLanguage(){
-	var locale = navigator.languages && navigator.languages[0] ||	// Chrome / Firefox
-		navigator.language || navigator.userLanguage;		// All browsers
+	if(getCookie("locale")){
+		return getCookie("locale");
+	}
+
+	else{
+		var locale = navigator.languages && navigator.languages[0] ||	// Chrome / Firefox
+			navigator.language || navigator.userLanguage;		// All browsers
 
 		return locale.length > 2 ? locale.slice(0, 2) : locale;
+	}
 }
 
 /**
- * Gets the msg data stored in the provided node
+ * Gets the data value from the provided data name attribute
  * 
+ * @param  {String} data The name of the data attribute which will extract the value
  * @param  {Node}   node The node element from HTML
  * @return {String}      The message box value in the element
  */
-function getDataMsg(node){
-	return node.attributes.getNamedItem("data-msg").nodeValue;
+function getData(data, node){
+	return node.attributes.getNamedItem(`data-${data}`).nodeValue;
+}
+
+function setLang(local){
+	setCookie("locale", local);
+
+	location.reload();
+}
+
+function setCookie(key, value){
+	var date = new Date();
+
+	date.setDate(date.getDate() + 7);
+
+	var cookie = `${key}=${value}; ${date.toUTCString()};`;
+	
+	document.cookie = cookie;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
