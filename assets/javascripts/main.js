@@ -8,7 +8,8 @@ function init(){
 	setLocal();
 	setApiData();
 	setNavigation();
-	setImageLoaders(window.$currentNav);
+	// setImageLoaders(window.$currentNav);
+	loadMedia();
 }
 
 /**
@@ -74,6 +75,7 @@ function setImageLoaders(hash = null){
 	var imgs;
 	var selector = "img[data-src]";                     //Selector target
 	var loaderUrl = "/assets/images/loading-ring.svg";  //Loader file path
+	var promises = [];
 
 	if(hash){
 		var container = document.querySelector(hash);
@@ -86,22 +88,37 @@ function setImageLoaders(hash = null){
 	}
 
 	for(i = 0; imgs.length > i; i++){
-		// Get the target src of the image and load it to the cache
-		var img = imgs.item(i);
-		var imageUrl = img.attributes.getNamedItem("data-src").value;
+		// lock the iteration element
+		(function(i){
+			// Get the target src of the image and load it to the cache
+			var img = imgs.item(i);
+			var imageUrl = img.attributes.getNamedItem("data-src").value;
 
-		img.src = loaderUrl;
+			// Load the image if it's not loaded
+			if(!img.classList.contains("loaded")){
+				img.src = loaderUrl;
 
-		loadImage(imageUrl)
-			.then(() => {
-				// Once loaded to the cache then set the image to img node
-				img.src = imageUrl;
-				img.classList.add("loaded");
-			})
-			.catch(() => {
-				console.error("error loading image");
-			});
+				var load = loadImage(imageUrl);
+				
+				load.then(() => {
+					// Once loaded to the cache then set the image to img node
+					img.src = imageUrl;
+					img.classList.add("loaded");
+				})
+				.catch(() => {
+					console.error("error loading image");
+				});
+
+				promises.push(load);
+			}
+
+			else{
+				promises.push(Promise.resolve());
+			}
+		}).call(this, i);
 	}
+
+	return Promise.all(promises);
 }
 
 /**
@@ -126,6 +143,22 @@ function loadImage(imageUrl){
 	});
 }
 
+function loadMedia(){
+	var section = document.querySelector(window.$currentNav);
+	
+	if(!section.classList.contains("loaded")){
+		setImageLoaders(window.$currentNav)
+			.then(() => {
+				console.log(`${window.$currentNav} loaded`);
+
+				section.classList.add("loaded");
+			})
+			.catch(() => {
+				console.error(`error loading section hash ${window.$currentNav}`);
+			});
+	}
+}
+
 /**
  * Navigates to the target hash with a fading animation
  * 
@@ -145,6 +178,8 @@ function navigate(hash, force = false){
 			oldSection.ontransitionend = null;
 
 			section.classList.remove("hidden");
+
+			loadMedia();
 		};
 	}
 

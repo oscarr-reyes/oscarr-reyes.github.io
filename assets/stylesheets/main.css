@@ -31,7 +31,7 @@ content{
 }
 
 img.loaded{
-	animation: image_fade_in 3s;
+	animation: image_fade_in 2s;
 	animation-fill-mode: forwards;
 }
 
