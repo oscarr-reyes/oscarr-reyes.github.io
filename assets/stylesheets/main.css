@@ -14,8 +14,8 @@ header{
 	height: 60px;
 	justify-content: space-between;
 	z-index: 100;
-	-webkit-box-shadow: 0 1px 4px 1px #CCC;
-	box-shadow: 0 1px 4px 1px #CCC;
+	-webkit-box-shadow: 0 2px 5px rgba(0,0,0,.26);
+	box-shadow: 0 2px 5px rgba(0,0,0,.26);
 }
 header > #header-text{
 	margin: 18px;
@@ -39,14 +39,57 @@ content{
 	-webkit-box-shadow: 1px 0 4px 1px #CCC;
 	box-shadow: 1px 0 4px 1px #CCC;
 	z-index: 80;
+	position: relative;
+	overflow: hidden;
+}
+#sidenav > #language-settings{
+	position: absolute;
+	bottom: 0;
+	height: 50px;
+	width: 100%;
+	transition: background .2s;
+	z-index: 82;
+	background: #FFF;
+}
+#sidenav > #language-settings:hover{
+	background: #EEE;
+}
+#sidenav > #language-settings > a{
+	display: block;
+	padding: 14px 0 7px;
+	text-decoration: none;
+	outline-style: none;
+	text-align: center;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #e0e0e0;
+	cursor: pointer;
+}
+#sidenav > #language-list{
+	position: absolute;
+	bottom: 50px;
+	width: 100%;
+	max-height: 100px;
+	z-index: 81;
+	transition: max-height .2s ease-out;
+	display: unset !important;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #e0e0e0;
+}
+#sidenav > #language-list.hidden{
+	max-height: 0;
+	border-width: 0;
 }
 #sidenav > ul,
+#sidenav > #language-list > ul,
 .menu .menu-list > ul{
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 #sidenav > ul > li,
+#sidenav > #language-list > ul > li,
 .menu .menu-list > ul > li{
 	height: 50px;
 	box-sizing: padding-box;
@@ -54,10 +97,12 @@ content{
 	outline: 
 }
 #sidenav > ul > li:hover,
+#sidenav > #language-list > ul > li:hover,
 .menu .menu-list > ul > li:hover{
 	background: #EEE;
 }
 #sidenav > ul > li > a,
+#sidenav > #language-list > ul > li > a,
 .menu .menu-list > ul > li > a{
 	display: block;
 	padding: 14px;
@@ -178,4 +223,10 @@ section#section-home > #user-title{
 }
 .menu > .menu-list.menu-left{
 	right: 18px;
+}
+
+#languages-icons > i{
+	margin: 0 20px;
+	font-size: 80px;
+	cursor: pointer;
 }

@@ -16,7 +16,7 @@
 		</div>
 
 
-		<div class="menu">
+		<!-- <div class="menu">
 			<i class="material-icons text-primary-color menu-trigger">more_vert</i>
 
 			<div class="menu-list menu-left hidden">
@@ -30,7 +30,7 @@
 					</li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 	</header>
 
 	<content class="flexed-row flex-grow">
@@ -47,7 +47,28 @@
 				<li>
 					<a href="#section-projects" class="primary-text-color" data-msg="projects">{projects}</a>
 				</li>
+
+				<li>
+					<a href="#section-knowledge" class="primary-text-color" data-msg="knowledge">{knowledge}</a>
+				</li>
 			</ul>
+
+			<div id="language-settings">
+				<a class="sub-menu-trigger" data-menu-target="language-list">
+					<i class="material-icons secondary-text-color">language</i>
+				</a>	
+			</div>
+			<div id="language-list" class="sub-menu hidden">
+				<ul>
+					<li>
+						<a class="primary-text-color" href="javascript:setLang('es')">Español</a>
+					</li>
+					
+					<li>
+						<a class="primary-text-color" href="javascript:setLang('en')">English</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		
 		<div id="main" class="flexed-column flex-grow">
@@ -56,11 +77,11 @@
 
 				<h2 id="user-name" class="primary-text-color">Oscar Reyes <span id="user-nickname" class="secondary-text-color">(Nosthertus)</span></h2>
 
-				<!-- <p id="user-email" class="primary-text-color" data-prop="email">{email}</p>
+				<p id="user-email" class="primary-text-color" data-prop="email">{email}</p>
 
 				<p id="user-available" class="primary-text-color">
 					<span id="user-available-label" data-msg="available">{available}</span>: <span id="user-available-value" data-prop="hireable"></span>
-				</p> -->
+				</p>
 
 				<h3 id="user-title">Full-Stack Web Developer</h3>
 			</section>
