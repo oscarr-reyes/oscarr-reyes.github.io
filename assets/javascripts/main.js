@@ -53,6 +53,7 @@ function setApiData(){
  */
 function setNavigation(){
 	var navigators = document.querySelectorAll("[data-navigate]");
+	var sections = document.querySelectorAll("section");
 
 	for(i = 0; navigators.length > i; i++){
 		var navigator = navigators.item(i);
@@ -61,6 +62,20 @@ function setNavigation(){
 			var attr = this.attributes.getNamedItem("data-navigate");
 
 			navigate(attr.value);
+		});
+	}
+
+	// Tell parent #main when a section is fully hidden for new secion transition
+	for(i = 0; sections.length > i; i++){
+		var section = sections.item(i);
+
+		section.addEventListener("transitionend", function(){
+			if(this.classList.contains("hidden")){
+				var parent = this.parentNode;
+				var event = new Event("sectionHidden");
+
+				parent.dispatchEvent(event);
+			}
 		});
 	}
 }
@@ -143,6 +158,9 @@ function loadImage(imageUrl){
 	});
 }
 
+/**
+ * Loads all media nodes in the current selected section
+ */
 function loadMedia(){
 	var section = document.querySelector(window.$currentNav);
 	
@@ -171,16 +189,16 @@ function navigate(hash, force = false){
 
 	if(hash != window.$currentNav && force == false){
 		oldSection.classList.add("hidden");
-
-		oldSection.ontransitionend = function(){
+		
+		// TODO: optimize this, currently duplicates for each execution
+		section.parentNode.addEventListener("sectionHidden", function(){
 			window.location.hash = hash;
 			window.$currentNav = hash;
-			oldSection.ontransitionend = null;
 
 			section.classList.remove("hidden");
 
 			loadMedia();
-		};
+		});
 	}
 
 	else if(force == true){
