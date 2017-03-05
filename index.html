@@ -37,19 +37,19 @@
 		<div id="sidenav">
 			<ul>
 				<li>
-					<a href="#section-home" class="primary-text-color" data-msg="home">{home}</a>
+					<a data-navigate="#section-home" class="primary-text-color" data-msg="home">{home}</a>
 				</li>
 				
 				<li>
-					<a href="#section-biography" class="primary-text-color" data-msg="biography">{biography}</a>
+					<a data-navigate="#section-biography" class="primary-text-color" data-msg="biography">{biography}</a>
 				</li>
 				
 				<li>
-					<a href="#section-projects" class="primary-text-color" data-msg="projects">{projects}</a>
+					<a data-navigate="#section-projects" class="primary-text-color" data-msg="projects">{projects}</a>
 				</li>
 
 				<li>
-					<a href="#section-knowledge" class="primary-text-color" data-msg="knowledge">{knowledge}</a>
+					<a data-navigate="#section-knowledge" class="primary-text-color" data-msg="knowledge">{knowledge}</a>
 				</li>
 			</ul>
 
@@ -72,7 +72,7 @@
 		</div>
 		
 		<div id="main" class="flexed-column flex-grow">
-			<section id="section-home" class="flexed-column">
+			<section id="section-home" class="flexed-column hidden">
 				<img id="user-thumbnail" src="https://avatars.githubusercontent.com/u/5789159?v=3">
 
 				<h2 id="user-name" class="primary-text-color">Oscar Reyes <span id="user-nickname" class="secondary-text-color">(Nosthertus)</span></h2>
@@ -86,11 +86,15 @@
 				<h3 id="user-title">Full-Stack Web Developer</h3>
 			</section>
 
-			<section id="section-biography">
+			<section id="section-biography" class="flexed-column hidden">
 				<h1 class="section-title primary-text-color" data-msg="biography">{biography}</h1>
+
+				<div class="flex-grow flexed-column">
+					<p id="biography-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vestibulum nisi mollis vehicula ultrices. Quisque dapibus odio vestibulum nulla commodo pellentesque. Duis eu vehicula neque, eu ullamcorper justo. Mauris posuere mi sit amet sapien ultricies venenatis. Duis viverra pharetra lorem, eu tincidunt sapien hendrerit ut. Pellentesque aliquet, dolor a hendrerit scelerisque, tortor magna sodales dolor, in condimentum enim mauris at lorem. Maecenas ultrices pretium augue, quis vehicula arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus tempor ante mauris, non lacinia lacus interdum at. </p>
+				</div>
 			</section>
 			
-			<section id="section-projects" class="flexed-column">
+			<section id="section-projects" class="flexed-column hidden">
 				<h1 class="section-title primary-text-color" data-msg="projects">{projects}</h1>
 				
 				<div class="flexed-row flex-grow section-content wrapper">

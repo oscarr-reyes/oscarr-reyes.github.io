@@ -1,9 +1,13 @@
 window.onload = init;
+window.$currentNav = "#section-home";
 
 function init(){
+	navigate(location.hash || window.$currentNav, true); //Display the home section
+
 	// Set local messages
 	setLocal();
 	setApiData();
+	setNavigation();
 }
 
 /**
@@ -40,6 +44,52 @@ function setApiData(){
 				node.textContent = data[prop];
 			}
 		});
+}
+
+/**
+ * Adds event listener to all navigators
+ */
+function setNavigation(){
+	var navigators = document.querySelectorAll("[data-navigate]");
+
+	for(i = 0; navigators.length > i; i++){
+		var navigator = navigators.item(i);
+
+		navigator.addEventListener("click", function(){
+			var attr = this.attributes.getNamedItem("data-navigate");
+
+			navigate(attr.value);
+		});
+	}
+}
+
+/**
+ * Navigates to the target hash with a fading animation
+ * 
+ * @param  {String}  hash  The hash url string where to transition
+ * @param  {Boolean} force Whether should force the navigation to the hash without hiding the old section
+ */
+function navigate(hash, force = false){
+	var section = document.querySelector(hash);
+	var oldSection = document.querySelector(window.$currentNav);
+
+	if(hash != window.$currentNav && force == false){
+		oldSection.classList.add("hidden");
+
+		oldSection.ontransitionend = function(){
+			window.location.hash = hash;
+			window.$currentNav = hash;
+			oldSection.ontransitionend = null;
+
+			section.classList.remove("hidden");
+		};
+	}
+
+	else if(force == true){
+		window.$currentNav = hash;
+
+		section.classList.remove("hidden");
+	}
 }
 
 /**
