@@ -30,6 +30,11 @@ content{
 	z-index: 90;
 }
 
+img.loaded{
+	animation: image_fade_in 3s;
+	animation-fill-mode: forwards;
+}
+
 .hidden{
 	display: none;
 }
@@ -238,4 +243,20 @@ section#section-biography #biography-text{
 	margin: 0 20px;
 	font-size: 80px;
 	cursor: pointer;
+}
+
+@keyframes image_fade_in{
+	0% {
+		opacity: 0;
+		filter: saturate(20%) brightness(125%);
+	}
+	66.7% {
+		opacity: 1;
+	}
+	83.3% {
+		filter: saturate(87%) brightness(100%);
+	}
+	100% {
+		filter: saturate(100%) brightness(100%);
+	}
 }

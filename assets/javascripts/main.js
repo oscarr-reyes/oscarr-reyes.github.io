@@ -8,6 +8,7 @@ function init(){
 	setLocal();
 	setApiData();
 	setNavigation();
+	setImageLoaders(window.$currentNav);
 }
 
 /**
@@ -61,6 +62,68 @@ function setNavigation(){
 			navigate(attr.value);
 		});
 	}
+}
+
+/**
+ * Sets the image loaders to all img detected in the container, if
+ * hash is provided then only imgs inside the hash node will load
+ * 
+ * @param {String} hash The hash element where to load imgs
+ */
+function setImageLoaders(hash = null){
+	var imgs;
+	var selector = "img[data-src]";                     //Selector target
+	var loaderUrl = "/assets/images/loading-ring.svg";  //Loader file path
+
+	if(hash){
+		var container = document.querySelector(hash);
+
+		imgs = container.querySelectorAll(selector);
+	}
+
+	else{
+		imgs = document.querySelectorAll(selector);
+	}
+
+	for(i = 0; imgs.length > i; i++){
+		// Get the target src of the image and load it to the cache
+		var img = imgs.item(i);
+		var imageUrl = img.attributes.getNamedItem("data-src").value;
+
+		img.src = loaderUrl;
+
+		loadImage(imageUrl)
+			.then(() => {
+				// Once loaded to the cache then set the image to img node
+				img.src = imageUrl;
+				img.classList.add("loaded");
+			})
+			.catch(() => {
+				console.error("error loading image");
+			});
+	}
+}
+
+/**
+ * Loads the image to the cache
+ * 
+ * @param  {String}  imageUrl The image file path where to load
+ * @return {Promise}          The result of loading the image file
+ */
+function loadImage(imageUrl){
+	return new Promise((resolve, reject) => {
+		var image = new Image();
+
+		image.onload = () => {
+			resolve();
+		};
+
+		image.onerror = () => {
+			reject();
+		};
+
+		image.src = imageUrl;
+	});
 }
 
 /**
