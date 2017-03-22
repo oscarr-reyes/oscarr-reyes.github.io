@@ -4,6 +4,7 @@
 		"home": "home",
 		"projects": "projects",
 		"available": "available",
+		"menu.source": "source code",
 		"biography.about-me": "I started programming at 16 with game mods, eventually i fell in love with behind-scene logic on games until i started developing websites with PHP... since PHP is only server logic i studied all the fundations and methods for coding servers, shortly after i started studying front-end programming languages because i did not always have a front-end developer partner to help me with client's logic, with this i learned JavaScript and CSS, thanks to it i was able to move to Node.JS and start making more complex applications like \"real-time chat\" and developing API Rest applications.\n\nI am always eager to learn and accept all kind of challenges that i might face in the future, i love correcting errors because they help to improve not only the program but also myself.",
 		"projects.organizer-sub": "A task organizer for projects"
 	},
@@ -12,6 +13,7 @@
 		"home": "home",
 		"projects": "proyectos",
 		"available": "disponible",
+		"menu.source": "codigo fuente",
 		"biography.about-me": "Empeze la programacion a los 16 con mods de juegos, eventualmente me enamore con la logica detras de los juegos hasta que empeze a desarrollar sitios web con PHP... ya que PHP es solo logica de servidor, estudie todos los funtamentos y metodos para programar servicores, poco despues empeze a estudiar programacion front-end porque no siempre tenia a un compañero desarrolador front-end que me ayudara con la logica del cliente, con esto aprendi JavaScript y CSS, gracias a eso tuve la posibilidad de mudarme a Node.JS y empezar a crear aplicationes mas complejas como \"chat en tiempo-real\" y desarrolar aplicationes API Rest. \n\nSiempre tengo el deseo de aprender y aceptar todo tipo de retos que podria enfrentar en el futuro, yo amo corregit errores porque ellos ayudan a mejorar no solo al programa, sino a mi tambien.",
 		"projects.organizer-sub": "Organizador de tareas de proyectos"
 	}
