@@ -203,6 +203,10 @@ section#section-biography #biography-text{
 	height: 180px;
 	width: 320px;
 }
+.card > .card-media img{
+	height: inherit;
+	width: inherit;
+}
 .card > .card-title{
 	padding: 16px;
 }
