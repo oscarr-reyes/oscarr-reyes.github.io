@@ -212,6 +212,15 @@ section#section-biography #biography-text{
 .card > .card-title > .card-title-sub-text{
 	margin: 8px 0 0;
 }
+.card > .card-actions{
+	padding: 8px;
+}
+.card > .card-actions > .button:first-child{
+	margin-right: 4px;
+}
+.card > .card-actions > .button:not(:first-child){
+	margin: 0 4px;
+}
 
 .menu{
 	position: relative;
@@ -243,6 +252,24 @@ section#section-biography #biography-text{
 	margin: 0 20px;
 	font-size: 80px;
 	cursor: pointer;
+}
+
+.button{
+	height: 36px;
+	border-radius: 2%;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: block;
+	box-sizing: border-box;
+	padding: 8px;
+	background: transparent;
+
+	transition: background .2s;
+	color: unset;
+	outline: none;
+}
+.button:hover{
+	background: rgba(117, 117, 117, .20);
 }
 
 @keyframes image_fade_in{
