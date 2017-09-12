@@ -140,25 +140,29 @@ img.loaded{
 	margin: 0 15px;
 }
 
-section#section-home > #user-thumbnail{
+section#section-home #user-thumbnail{
 	height: 160px;
 	width: 160px;
 	margin: auto auto 20px;
 	border-radius: 50%;
 }
-section#section-home > #user-name{
+section#section-home #user-name{
 	margin: 20px auto;
 }
-#user-name > #user-nickname{
+#user-name #user-nickname{
 	font-size: 16px;
 	font-style: italic;
 }
-section#section-home > #user-email,
-section#section-home > #user-available{
+section#section-home #user-sites > a{
+	margin: 0 10px;
+	font-size: 30px;
+}
+section#section-home #user-email,
+section#section-home #user-available{
 	margin: 10px auto;
 }
-section#section-home > #user-title{
-	margin: 20px auto auto;
+section#section-home #user-title{
+	margin: 20px auto;
 }
 section#section-biography #biography-text{
 	margin: 40px 20px;

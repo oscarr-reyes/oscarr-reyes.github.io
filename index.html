@@ -6,6 +6,8 @@
 	<meta charset="utf-8">
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/f78c67a02f.css">
+
 	<link rel="stylesheet" href="assets/stylesheets/main.css">
 	<link rel="stylesheet" href="assets/stylesheets/palette.css">
 </head>
@@ -65,17 +67,25 @@
 		
 		<div id="main" class="flexed-column flex-grow">
 			<section id="section-home" class="flexed-column hidden">
-				<img id="user-thumbnail" data-src="https://avatars.githubusercontent.com/u/5789159?v=3">
+				<div class="flexed-column centered">
+					<img id="user-thumbnail" data-src="https://avatars.githubusercontent.com/u/5789159?v=3">
 
-				<h2 id="user-name" class="primary-text-color">Oscar Reyes <span id="user-nickname" class="secondary-text-color">(Nosthertus)</span></h2>
+					<h2 id="user-name" class="primary-text-color">Oscar Reyes <span id="user-nickname" class="secondary-text-color">(Nosthertus)</span></h2>
 
-				<p id="user-email" class="primary-text-color" data-prop="email">{email}</p>
+					<h3 id="user-title">Full-Stack Web Developer</h3>
 
-				<p id="user-available" class="primary-text-color">
-					<span id="user-available-label" data-msg="available">{available}</span>: <span id="user-available-value" data-prop="hireable"></span>
-				</p>
+					<div id="user-sites" class="centered-row flexed-row">
+						<a href="https://github.com/nosthertus" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+						<a href="https://www.linkedin.com/in/oscar-reyes-a8199bb5/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						<a href="https://stackoverflow.com/users/2922330/nosthertus" target="_blank"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a>
+					</div>
 
-				<h3 id="user-title">Full-Stack Web Developer</h3>
+					<p id="user-email" class="primary-text-color" data-prop="email">{email}</p>
+
+					<p id="user-available" class="primary-text-color">
+						<span id="user-available-label" data-msg="available">{available}</span>: <span id="user-available-value" data-prop="hireable"></span>
+					</p>
+				</div>
 			</section>
 
 			<section id="section-biography" class="flexed-column hidden">
