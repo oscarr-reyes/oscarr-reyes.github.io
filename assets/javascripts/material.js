@@ -4,6 +4,7 @@ function materialInit(){
 	// Set all menu triggers
 	initMenus();
 	initSubMenus();
+	initTabs();
 }
 
 function initMenus(){
@@ -46,5 +47,88 @@ function initSubMenus(){
 				console.error("no menu target on node:", this);
 			}
 		});
+	}
+}
+
+/**
+ * Initializes the tabs component in order to execute the correct transition and animation.
+ * All tabs must follow the guideline from material.io/guidelines/component/tabs
+ *
+ * @todo Improve how the indicator should be selected within the whole function
+ */
+function initTabs(){
+	var tabs = document.querySelectorAll(".tabs");
+
+	for(i = 0; tabs.length > i; i++){
+		var tab             = tabs.item(i),
+			tabSelects      = tab.querySelectorAll(".tab-select-item"),
+			tabIndicator    = tab.querySelector(".tabs-indicator"),
+			tabContentWidth = tab.querySelector(".tabs-content").clientWidth;
+
+		// Give the first tab the class active as it will always be the first selected tab
+		tabSelects.item(0).classList.add("active");
+
+		// Check if there is a tab indicator in the tabs component
+		// Indicators can be optional
+		if(tabIndicator){
+			tabIndicator.style.width = tabSelects.item(0).clientWidth + "px";
+		}
+
+		for(t = 0; tabSelects.length > t; t++){
+			var tabSelect = tabSelects.item(t);
+
+			// Isolate the element iterated to avoid select duplication
+			(() => {
+				var item = t;
+
+				tabSelect.addEventListener("click", (evt) => {
+					selectTab(tab, item);
+				});	
+			})();
+		}
+	}
+
+	/**
+	 * Selects the tab item calculated from a multiplier index
+	 * 
+	 * @param  {Element} component  The selected tab component to execute the transition
+	 * @param  {Number}  multiplier The multiplier index of the tab clicked
+	 */
+	function selectTab(component, multiplier){
+		var tabItems        = component.querySelectorAll(".tab-content-item"),
+			tabSelects      = component.querySelectorAll(".tab-select-item"),
+			tabIndicator    = component.querySelector(".tabs-indicator"),
+			tabContent      = component.querySelector(".tabs-content"),
+			tabContentWidth = tabContent.clientWidth;
+
+		// TODO: Improve this
+		if(tabIndicator){
+			var tabIndicatorWidth = tabIndicator.clientWidth,
+				indicatorOffset   = (tabIndicatorWidth * multiplier);
+
+			tabIndicator.style.transform = `translateX(${indicatorOffset}px)`;
+
+			for(i = 0; tabSelects.length > i; i++){
+				var tabSelect = tabSelects.item(i);
+
+				// Give the active class to selected tab
+				if(i == multiplier){
+					tabSelect.classList.add("active");
+				}
+
+				// Remove the active class to the rest of the tabs if the contain it
+				else if(tabSelect.classList.contains("active")){
+					tabSelect.classList.remove("active");
+				}
+			}
+		}
+		
+		for(i = 0; tabItems.length > i; i++){
+			var tabItem = tabItems.item(i),
+				offset  = (tabContentWidth * multiplier) * -1;
+
+			// Animate the transition between tab contents when selected a tab
+			tabItem.style.transform = `translateX(${offset}px)`;
+		}
 	}
 }
