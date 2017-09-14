@@ -1,0 +1,175 @@
+.flexed-row{
+	display: flex;
+	flex-direction: row;
+}
+.flexed-column{
+	display: flex;
+	flex-direction: column;
+}
+.flexed-row.wrapper,
+.flexed-column.wrapper{
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-around;
+	align-items: baseline;
+}
+.flexed-row > .flex-grow,
+.flexed-column > .flex-grow{
+	flex: 1;
+}
+.centered{
+	margin: auto;
+}
+.centered-row{
+	margin: 0 auto;
+}
+
+.card{
+	-webkit-box-shadow: 0 2px 2px 0px #CCC;
+	box-shadow: 0 2px 2px 0px #CCC;
+
+	border-radius: 2px;
+
+	transition: all .2s;
+}
+.card:hover{
+	-webkit-box-shadow: 0 6px 8px 0px #CCC;
+	box-shadow: 0 6px 8px 0px #CCC;
+}
+.card > .card-media{
+	height: 180px;
+	width: 320px;
+}
+.card > .card-media img{
+	height: inherit;
+	width: inherit;
+}
+.card > .card-title{
+	padding: 16px;
+}
+.card > .card-title > .card-title-text{
+	margin: 0;
+}
+.card > .card-title > .card-title-sub-text{
+	margin: 8px 0 0;
+}
+.card > .card-actions{
+	padding: 8px;
+}
+.card > .card-actions > .button:first-child{
+	margin-right: 4px;
+}
+.card > .card-actions > .button:not(:first-child){
+	margin: 0 4px;
+}
+
+.tabs{
+	display: flex !important;
+	flex-direction: column !important;
+	-webkit-box-shadow: 0 2px 2px 0px #CCC;
+	box-shadow: 0 2px 2px 0px #CCC;
+	min-height: 180px;
+	margin: 15px;
+}
+.tabs > .tabs-head{
+	height: 48px;
+	display: flex !important;
+	flex-direction: column !important;
+	border-bottom: 1px solid #DDD;
+	box-sizing: border-box;
+}
+.tabs > .tabs-head > .tabs-selection{
+	flex: 1;
+	display: flex !important;
+	flex-direction: row !important;
+}
+.tabs > .tabs-head > .tabs-indicator{
+	height: 2px;
+	background: #0089F4;
+
+	-webkit-transition: transform .3s cubic-bezier(0.010, -0.015, 0.000, 1.000);
+	-moz-transition: transform .3s cubic-bezier(0.010, -0.015, 0.000, 1.000);
+	-o-transition: transform .3s cubic-bezier(0.010, -0.015, 0.000, 1.000);
+	transition: transform .3s cubic-bezier(0.010, -0.015, 0.000, 1.000);
+}
+.tabs .tabs-selection > .tab-select-item{
+	flex: 1;
+	text-align: center;
+	cursor: pointer;
+
+	-webkit-transition: color .3s ease-out;
+	-moz-transition: color .3s ease-out;
+	-o-transition: color .3s ease-out;
+	transition: color .3s ease-out;
+}
+.tabs .tabs-selection > .tab-select-item.active{
+	color: #0089F4;
+}
+.tabs .tabs-selection > .tab-select-item > p{
+	margin: 12px 0;
+}
+.tabs > .tabs-content{
+	flex: 1;
+	display: flex;
+	flex-direction: row !important;
+	overflow: hidden;
+}
+.tabs > .tabs-content > .tab-content-item{
+	margin: 15px;
+	min-width: calc(100% - 30px);
+
+	-webkit-transition: transform .3s cubic-bezier(0.010, -0.015, 0.000, 1.000);
+	-moz-transition: transform .3s cubic-bezier(0.010, -0.015, 0.000, 1.000);
+	-o-transition: transform .3s cubic-bezier(0.010, -0.015, 0.000, 1.000);
+	transition: transform .3s cubic-bezier(0.010, -0.015, 0.000, 1.000);
+}
+
+.menu{
+	position: relative;
+}
+.menu > .menu-list{
+	position: absolute;
+	top: 18px;
+	opacity: 1;
+
+	width: 150px;
+	background: #FFF;
+	-webkit-box-shadow: 0 6px 8px 0px #CCC;
+	box-shadow: 0 6px 8px 0px #CCC;
+	overflow: hidden;
+
+	transition: all .1s ease-out;
+}
+.menu > .menu-list.hidden{
+	display: unset;
+	top: 0px;
+	opacity: 0;
+	height: 0px;
+}
+.menu > .menu-list.menu-left{
+	right: 18px;
+}
+
+#languages-icons > i{
+	margin: 0 20px;
+	font-size: 80px;
+	cursor: pointer;
+}
+
+.button{
+	height: 36px;
+	border-radius: 2%;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: block;
+	box-sizing: border-box;
+	padding: 8px;
+	background: transparent;
+
+	transition: background .2s;
+	color: unset;
+	outline: none;
+}
+.button:hover{
+	background: rgba(117, 117, 117, .20);
+}
