@@ -132,12 +132,23 @@ img.loaded{
 	opacity: 0;
 	display: flex;
 }
-#main > section h1.section-title{
+#main > section h1.section-title,
+#main > section .section-subtitle{
 	margin: 15px;
 	text-transform: capitalize;
 }
+#main > section .section-subtitle{
+	margin: 10px;
+	border-bottom: 1px solid #CCC;
+}
 #main > section .section-content{
 	margin: 0 15px;
+}
+
+#programming-languages.tabs ul{
+	columns: 4;
+}
+#programming-languages.tabs ul > li{
 }
 
 section#section-home #user-thumbnail{
