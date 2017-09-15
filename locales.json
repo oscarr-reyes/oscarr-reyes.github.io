@@ -9,7 +9,8 @@
 		"projects.organizer-sub": "A task organizer for projects",
 		"knowledge": "Knowledge",
 		"programming-languages": "Programming Languages",
-		"spoken-languages": "Spoken Languages"
+		"spoken-languages": "Spoken Languages",
+		"tools": "Tools"
 	},
 	"es": {
 		"biography": "Acerca de mi",
@@ -21,6 +22,7 @@
 		"projects.organizer-sub": "Organizador de tareas de proyectos",
 		"knowledge": "Conocimiento",
 		"programming-languages": "Lenguajes de Programacion",
-		"spoken-languages": "Idiomas"
+		"spoken-languages": "Idiomas",
+		"tools": "Herramientas"
 	}
 }

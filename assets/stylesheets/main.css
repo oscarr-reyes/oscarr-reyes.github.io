@@ -138,7 +138,7 @@ img.loaded{
 	text-transform: capitalize;
 }
 #main > section .section-subtitle{
-	margin: 10px;
+	margin: 10px 15px;
 	border-bottom: 1px solid #CCC;
 }
 #main > section .section-content{
