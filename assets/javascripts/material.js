@@ -59,6 +59,13 @@ function initSubMenus(){
 function initTabs(){
 	var tabs = document.querySelectorAll(".tabs");
 
+	// Set the resize event to all tabs if there's any tab component in the document
+	if(tabs.length > 0){
+		window.addEventListener("resize", () => {
+			resizeIndicators();
+		});
+	}
+
 	for(i = 0; tabs.length > i; i++){
 		var tab             = tabs.item(i),
 			tabSelects      = tab.querySelectorAll(".tab-select-item"),
@@ -107,6 +114,7 @@ function initTabs(){
 				indicatorOffset   = (tabIndicatorWidth * multiplier);
 
 			tabIndicator.style.transform = `translateX(${indicatorOffset}px)`;
+			
 
 			for(i = 0; tabSelects.length > i; i++){
 				var tabSelect = tabSelects.item(i);
@@ -130,5 +138,42 @@ function initTabs(){
 			// Animate the transition between tab contents when selected a tab
 			tabItem.style.transform = `translateX(${offset}px)`;
 		}
+	}
+
+	/**
+	 * Resizes all tab indicators whenever the browser changes its size
+	 */
+	function resizeIndicators(){
+		for(i = 0; tabs.length > i; i++){
+			var tab          = tabs.item(i),
+				tabSelect    = tab.querySelector(".tab-select-item"),
+				tabIndicator = tab.querySelector(".tabs-indicator");
+
+			if(tabIndicator){
+				var translateX = getTranslateX(tabIndicator),
+					offset     = (translateX - tabSelect.clientWidth) * -1;
+
+				// Give the indicator the new size
+				tabIndicator.style.width = tabSelect.clientWidth + "px";
+
+				// Reposition the indicator offset whenever it's offset is not in the first tab
+				if(translateX != 0){
+					tabIndicator.style.transform = `translateX(${tabSelect.clientWidth + offset}px)`
+				}
+			}
+		}
+	}
+
+	/**
+	 * Gets the translateX transform value from a provided element
+	 * 
+	 * @param  {Element} element The element where to extract the computed value
+	 * @return {Number}          The computed value of translateX
+	 */
+	function getTranslateX(element){
+		var style  = window.getComputedStyle(element),
+			matrix = new WebKitCSSMatrix(style.webkitTransform);
+
+		return matrix.m41;
 	}
 }
