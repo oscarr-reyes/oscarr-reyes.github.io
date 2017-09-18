@@ -37,7 +37,7 @@ function setLocal(){
 function setApiData(){
 	var props = document.querySelectorAll("*[data-prop]");
 
-	fetch("https://api.github.com/users/Nosthertus")
+	fetch("https://api.github.com/users/oscarr-reyes")
 		.then((data) => {
 			for(i = 0; props.length > i; i++){
 				var node = props.item(i),
